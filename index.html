@@ -1,0 +1,15 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Open in Due</title>
+<style>body{font-family:-apple-system,sans-serif;text-align:center;padding:3em 1em}a{display:inline-block;padding:1em 2em;background:#e5533d;color:#fff;border-radius:12px;text-decoration:none;font-size:1.2em}</style>
+</head><body>
+<p id="m">Opening Due…</p><p><a id="b" href="#">Open in Due</a></p>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search), u=q.get('u');
+  if(!u){var t=q.get('t'); if(t){u='due://x-callback-url/add?title='+encodeURIComponent(t); var d=q.get('d'); if(d&&/^\d+$/.test(d)) u+='&duedate='+d;}}
+  var b=document.getElementById('b'), m=document.getElementById('m');
+  if(!u||u.indexOf('due://')!==0){m.textContent='Not a Due link.';b.style.display='none';return;}
+  b.href=u; location.href=u;
+})();
+</script></body></html>
